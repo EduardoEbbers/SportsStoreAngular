@@ -6,7 +6,22 @@
     </div>
     <div class="row text-white">
         <div class="bg-success col-3 p-2">
+            <!--
             <p>{{ categories.length }} Categories</p>
+            -->
+            <div class="d-grid gap-2">
+                <button class="btn btn-outline-info"
+                        (click)="changeCategory()">
+                    Home
+                </button>
+                <button class="btn btn-outline-info"
+                        *ngFor="let category of categories"
+                        (click)="changeCategory(category)"
+                        [class.active]="category == selectedCategory">
+                    {{ category }}
+                </button>
+            </div>
+            
         </div>
         <div class="bg-warning col-9 p-2 text-black">
             <!--
