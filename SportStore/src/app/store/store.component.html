@@ -8,8 +8,22 @@
         <div class="bg-success col-3 p-2">
             <p>{{ categories.length }} Categories</p>
         </div>
-        <div class="bg-warning col-9 p-2">
+        <div class="bg-warning col-9 p-2 text-black">
+            <!--
             <p>{{ products.length }} Products</p>
+            -->
+            <div class="card m-1 p-1 bg-light"
+                    *ngFor="let product of products">
+                <h4>
+                    {{ product.name }}
+                    <span class="badge rounded-pill bg-primary" style="float: right">
+                        {{ product.price | currency:"BRL":"symbol":"2.2-2" }}
+                    </span>
+                </h4>
+                <div class="card-text bg-white p-1">
+                    {{ product.description }}
+                </div>
+            </div>
         </div>
     </div>
 </div>
