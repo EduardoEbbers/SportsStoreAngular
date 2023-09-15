@@ -1,6 +1,7 @@
 import { Component } from "@angular/core";
 import { Product } from "../model/product.model";
 import { ProductRepository } from "../model/product.repository";
+import { Cart } from "../model/cart.model";
 
 @Component({
     selector: 'store',
@@ -11,7 +12,7 @@ export class StoreComponent {
     selectedPage = 1;
     productsPerPage = 4;
 
-    constructor(private repository: ProductRepository) {
+    constructor(private repository: ProductRepository, private cart: Cart) {
          
     }
 
@@ -61,4 +62,7 @@ export class StoreComponent {
         this.changePage(1);
     }
 
+    addProductToCart(product: Product) {
+        this.cart.addLine(product);
+    }
 }
