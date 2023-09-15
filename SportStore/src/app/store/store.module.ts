@@ -8,6 +8,7 @@ import { CartSummaryComponent } from "./cartSummary.component";
 import { CartDetailComponent } from "./cartDetail.component";
 import { CheckoutComponent } from "./checkout.component";
 import { RouterModule } from "@angular/router";
+import { OrderComponent } from "./order.component";
 
 @NgModule({
     imports: [
@@ -21,7 +22,8 @@ import { RouterModule } from "@angular/router";
         CounterDirective,
         CartSummaryComponent,
         CartDetailComponent,
-        CheckoutComponent
+        CheckoutComponent,
+        OrderComponent
     ],
     exports: [
         StoreComponent,
