@@ -1,7 +1,8 @@
-import { Component, IterableDiffer, IterableDiffers } from "@angular/core";
+import { Component, IterableDiffer, IterableDiffers, ViewChild } from "@angular/core";
 import { ProductRepository } from "../model/product.repository";
 import { MatTableDataSource } from "@angular/material/table";
 import { Product } from "../model/product.model";
+import { MatPaginator } from "@angular/material/paginator";
 
 @Component({
     templateUrl: './productTable.component.html'
@@ -11,6 +12,9 @@ export class ProductTableComponent {
     dataSource = new MatTableDataSource<Product>(this.repository.getProducts());
     differ: IterableDiffer<Product>;
 
+    @ViewChild(MatPaginator)
+    paginator?: MatPaginator;
+
     constructor(private repository: ProductRepository, differs: IterableDiffers) {
         this.differ = differs.find(this.repository.getProducts()).create();
     }
@@ -19,6 +23,12 @@ export class ProductTableComponent {
         let changes = this.differ?.diff(this.repository.getProducts());
         if(changes != null) {
             this.dataSource.data = this.repository.getProducts();
+        }
+    }
+
+    ngAfterViewInit() {
+        if(this.paginator) {
+            this.dataSource.paginator = this.paginator;
         }
     }
 
