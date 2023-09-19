@@ -9,6 +9,7 @@ import { StoreComponent } from './store/store.component';
 import { CartDetailComponent } from './store/cartDetail.component';
 import { CheckoutComponent } from './store/checkout.component';
 import { StoreFirstGuard } from './storeFirst.guard';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 const routes: Routes = [
   { 
@@ -41,7 +42,8 @@ const routes: Routes = [
   imports: [
     BrowserModule,
     StoreModule,
-    RouterModule.forRoot(routes)
+    RouterModule.forRoot(routes),
+    BrowserAnimationsModule
   ],
   providers: [StoreFirstGuard],
   bootstrap: [AppComponent]
