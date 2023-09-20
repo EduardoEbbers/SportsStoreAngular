@@ -13,7 +13,7 @@ const enableHttps = false;
 const ssloptions = {};
 
 if(enableHttps) {
-    ssloptions.cert = fs.readdirSync('./ssl/sportstore.crt');
+    ssloptions.cert = fs.readFileSync('./ssl/sportstore.crt');
     ssloptions.key = fs.readFileSync('./ssl/sportstore.pem');
 }
 
@@ -23,7 +23,7 @@ app.use(bodyParser.json());
 app.use(auth);
 app.use('/api', router);
 app.use(history());
-app.use('/', express.static('./dist/SportStore'));
+app.use('/', express.static('./dist/sport-store'));
 
 app.listen(80, () => console.log('HTTP Server running on port 80'));
 
